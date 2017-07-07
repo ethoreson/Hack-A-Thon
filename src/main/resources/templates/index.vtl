@@ -4,7 +4,7 @@
 #if ($tasks)
   <ul>
     #foreach ($team in $teams)
-      <li>$team.getTeamName()</li>
+      <li><a href="/teams/$team.getId()">$team.getTeamName()</a></li>
     #end
   </ul>
 #else
@@ -19,4 +19,6 @@
 
   <button type="submit" class="btn btn-default">Add team</button>
 </form>
+
+<a href="/aboutus">About this Hack-a-thon</a>
 <!--index.vtl-->

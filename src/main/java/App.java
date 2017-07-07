@@ -19,6 +19,13 @@ public class App {
       return new ModelAndView(new HashMap(), "templates/index.vtl");
     }, new VelocityTemplateEngine());
 
+    get("/teams", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("teams", Team.all());
+      model.put("template", "templates/teams.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
     post("/teams", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
 
@@ -32,9 +39,19 @@ public class App {
       Team newTeam = new Team(teamName);
       teams.add(newTeam);
 
-      model.put("template", "templates/success.vtl");
+      model.put("template", "templates/successteam.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
+
+    get("/teams/:id", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      Team team = Team.find(Integer.parseInt(request.params(":id")));
+      model.put("team", team);
+      model.put("template", "templates/team.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+
 
   }
 }

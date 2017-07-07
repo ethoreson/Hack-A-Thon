@@ -1,7 +1,17 @@
 <!--successteam.vtl-->
 <h1>Success!</h1>
+<h2>$Team.getTeamName()</h2>
+<h2>has been created.</h2>
 
-Your team has been created.
+<p>Add a Member to this Team:</p>
+
+<form action="/successteam" method="post">
+  <label for="memberName">Member Name</label>
+  <input id="memberName" name="memberName" type="text">
+
+  <button type="submit" class="btn btn-default">Add Member</button>
+</form>
 
 <a href="/">See all Teams</a>
+
 <!--successteam.vtl-->
