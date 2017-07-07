@@ -1,9 +1,19 @@
 <!--index.vtl-->
 <h1>Welcome to Emilie's Hack-A-Thon</h1>
 
+#if ($tasks)
+  <ul>
+    #foreach ($team in $teams)
+      <li>$team.getTeamName()</li>
+    #end
+  </ul>
+#else
+  <p>No teams yet!</p>
+#end
+
 <p>Add a new Team:</p>
 
-<form action="/team" method="post">
+<form action="/teams" method="post">
   <label for="teamName">Team Name</label>
   <input id="teamName" name="teamName" type="text">
 
